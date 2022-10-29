@@ -3,21 +3,26 @@ package com.cydeo.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
-@Table(name = "products")
-@NoArgsConstructor
 @Data
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@NoArgsConstructor
+public class Product extends BaseEntity{
+
     private String name;
     private BigDecimal price;
-    private int quantity;
-    private int remainingQuantity;
+    private Integer quantity;
+    private Integer remaining_quantity;
 
-
+    @ManyToMany
+    @JoinTable(name = "product_category_rel",
+               joinColumns = @JoinColumn(name = "p_id"),
+                inverseJoinColumns = @JoinColumn(name = "c_id"))
+    private List<Category> categoryList;
 }

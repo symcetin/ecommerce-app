@@ -3,14 +3,12 @@ package com.cydeo.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
 
 @Entity
 @NoArgsConstructor
 @Data
-public class Category {
+public class Category extends BaseEntity{
     private String name;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
 }

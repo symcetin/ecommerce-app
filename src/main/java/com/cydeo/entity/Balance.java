@@ -7,9 +7,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "balances")
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
 public class Balance {
 
     @Id
@@ -20,6 +19,5 @@ public class Balance {
 
     @OneToOne
     private Customer customer;
-
 
 }
